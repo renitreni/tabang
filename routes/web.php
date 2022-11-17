@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Livewire\ComplaintFormLivewire;
+use App\Http\Livewire\HomeLivewire;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,4 +20,4 @@ Route::get('/', ComplaintFormLivewire::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', HomeLivewire::class)->name('home');

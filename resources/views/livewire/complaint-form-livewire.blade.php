@@ -82,8 +82,13 @@
         </div>
         <div class="card-footer">
             <div class="col-md-12 mb-2">
-                <div class="d-grid">
+                <div class="d-grid w-100">
                     <button type="button" class="btn btn-primary" wire:click="store">Submit</button>
+                </div>
+                <div class="d-flex justify-content-center mt-2">
+                    <div>
+                        <a href="{{ route('login') }}" class="btn btn-link p-0">Login</a> or <a href="#" class="btn btn-link p-0">Create Account</a>
+                    </div>
                 </div>
             </div>
         </div>
