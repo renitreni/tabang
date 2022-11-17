@@ -17,6 +17,11 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('themes/sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <style>
+        .bg-login-image {
+          background-image: url("{{ asset('images/login-image.jpg') }}");
+        }
+    </style>
 </head>
 
 <body class="bg-gradient-primary">
