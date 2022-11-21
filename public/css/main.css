@@ -1,4 +1,3 @@
-
 .alert-btn {
     min-width: 60px;
     min-height: 60px;
@@ -93,4 +92,21 @@
     opacity: 0.6;
     font-size: 14px;
     margin-bottom: 0.3rem !important;
+}
+
+.preview-profile {
+    height: 150px !important;
+    width: 150px !important;
+    align-self: center;
+}
+
+.label-file{
+    display: inline-block;
+    background-color: indigo;
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
 }

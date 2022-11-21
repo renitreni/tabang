@@ -2,6 +2,7 @@
 
 use App\Http\Livewire\ComplaintFormLivewire;
 use App\Http\Livewire\HomeLivewire;
+use App\Http\Livewire\RegisterLivewire;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -16,8 +17,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', ComplaintFormLivewire::class);
 
 Auth::routes();
 
-Route::get('/home', HomeLivewire::class)->name('home');
+Route::get('storage', function () {
+    $path = storage_path('app/'.request('path'));
+
+    return ! File::exists($path)
+        ? abort(404)
+        : Response::make(File::get($path))->header("Content-Type", File::mimeType($path));
+})->name('storage');
+
+Route::get('/complaint', ComplaintFormLivewire::class)->name('complaint');
+Route::get('/register', RegisterLivewire::class)->name('register-livewire');
+
+Route::get('/', function () {
+    return to_route('login');
+});
+
+Route::middleware('auth:web')->group(function () {
+    Route::get('/home', HomeLivewire::class)->name('home');
+});
+
