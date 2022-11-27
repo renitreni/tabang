@@ -11,7 +11,8 @@ class ComplaintFormLivewire extends Component
 
     public function render()
     {
-        return view('livewire.complaint-form-livewire')->layout('layouts.guest');
+        return view('livewire.complaint-form-livewire')
+                ->layout('layouts.guest');
     }
 
     public function store()
