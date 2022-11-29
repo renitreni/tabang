@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('themes/sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+    @livewireStyles
 </head>
 
 <body id="page-top">
@@ -65,7 +65,7 @@
 
 </div>
 <!-- End of Page Wrapper -->
-
+@livewireScripts
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>

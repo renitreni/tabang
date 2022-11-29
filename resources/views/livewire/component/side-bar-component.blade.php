@@ -18,5 +18,12 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item @if($uri == 'users') active @endif">
+            <a class="nav-link" href="{{ route('users') }}">
+                <i class="fas fa-fw fa-users"></i>
+                <span>User Management</span></a>
+        </li>
     </ul>
 </div>
