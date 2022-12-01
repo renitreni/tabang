@@ -20,8 +20,28 @@ class UsersDatatable extends DataTableComponent
             Column::make('roles')->sortable()->format(function ($value) {
                 $role = 'User';
                 $role = $value == 1 ? 'Admin' : $role;
+
                 return $value == 2 ? 'Agency' : $role;
             }),
+            Column::make('action')
+                  ->format(function ($value, $object, $rows) {
+
+                      return '
+                      <div class="d-flex flex-row">
+                        <button type="button" class="btn btn-sm btn-info"
+                        onclick="Livewire.emit(\'editUser\','. $rows->id .')"
+                        data-toggle="modal" data-target="#userAdd">
+                        <i class="fas fa-edit"></i>
+                        </button>
+                        <button type="button" class="btn btn-sm btn-danger"
+                        onclick="Livewire.emit(\'destroyUser\','. $rows->id .')"
+                        data-toggle="modal" data-target="#deleteModal">
+                        <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                      ';
+                  })
+                  ->asHtml(),
         ];
     }
 

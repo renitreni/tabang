@@ -42,6 +42,8 @@ class RegisterLivewire extends Component
     public function save()
     {
         $this->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
             'email' => 'required|unique:users',
             'password' => 'required',
             'passwordConfirmation' => 'required|same:password',
@@ -50,7 +52,8 @@ class RegisterLivewire extends Component
 
         $user = User::query()
             ->create([
-                'name' => "$this->lastName, $this->firstName",
+                'last_name' => $this->lastName,
+                'first_name' => $this->firstName,
                 'email' => $this->email,
                 'password' => encrypt($this->password),
                 'roles' => 3,

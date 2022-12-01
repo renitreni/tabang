@@ -15,6 +15,8 @@ class UsersLivewire extends Component
 
     public $photo;
 
+    public ?int $userID = null;
+
     public ?string $email = null;
 
     public ?string $password = null;
@@ -30,6 +32,8 @@ class UsersLivewire extends Component
     public ?string $title = null;
 
     public ?string $role = null;
+
+    protected $listeners = ['destroyUser' => 'destroy', 'editUser' => 'edit'];
 
     public function render(): Factory|View|Application
     {
@@ -72,16 +76,44 @@ class UsersLivewire extends Component
                 'address' => '',
                 'phone' => $this->phone,
                 'email' => $this->email,
-                'password' => encrypt($this->password),
-                'name' => "$this->lastName, $this->firstName",
+                'password' => bcrypt($this->password),
+                'first_name' => $this->firstName,
+                'last_name' => $this->lastName,
                 'profile_photo' => $this->photo->store('profile_photos/'),
             ]);
+
         $this->email = null;
         $this->phone = null;
         $this->photo = null;
-        $this->password = null;
         $this->lastName = null;
         $this->firstName = null;
+        $this->password = null;
         $this->passwordConfirmation = null;
+    }
+
+    public function destroy($id)
+    {
+        $this->userID = $id;
+    }
+
+    public function confirmDestroy()
+    {
+        User::query()->find($this->userID)->delete();
+
+        $this->emit('refreshDatatable');
+    }
+
+    public function edit($id)
+    {
+        $this->title = 'Edit User';
+        $user = User::find($id);
+
+        $this->email = $user->email;
+        $this->phone = $user->phone;
+        $this->photo = $user->photo;
+        $this->lastName = $user->last_name;
+        $this->firstName = $user->first_name;
+        $this->password = 'samplepasspass';
+        $this->passwordConfirmation = 'samplepasspass';
     }
 }
