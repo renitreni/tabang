@@ -30,7 +30,7 @@ class UsersDatatable extends DataTableComponent
                       <div class="d-flex flex-row">
                         <button type="button" class="btn btn-sm btn-info"
                         onclick="Livewire.emit(\'editUser\','. $rows->id .')"
-                        data-toggle="modal" data-target="#userAdd">
+                        data-toggle="modal" data-target="#userEdit">
                         <i class="fas fa-edit"></i>
                         </button>
                         <button type="button" class="btn btn-sm btn-danger"
