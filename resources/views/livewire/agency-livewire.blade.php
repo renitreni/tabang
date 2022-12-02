@@ -35,12 +35,12 @@
     </div>
     @include('livewire.partials.agenc-crud')
 
-<!-- Modal -->
-    <div wire:ignore.self class="modal fade" id="agencyModal" tabindex="-1" aria-labelledby="agencyModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div wire:ignore.self class="modal fade" id="memberModal" tabindex="-1" aria-labelledby="memberModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="agencyModalLabel">Add Agency</h5>
+                    <h5 class="modal-title" id="memberModalLabel">Members</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -73,5 +73,4 @@
             </div>
         </div>
     </div>
-
 </div>
