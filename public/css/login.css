@@ -4,6 +4,9 @@
 .bg-custom {
         background: linear-gradient(90deg, rgb(168, 38, 5) 0%, rgb(128, 89, 53) 100%);
 }
+.bg-white {
+        background: whitesmoke;
+}
 .alert-btn {
             min-width: 6px;
             min-height: 60px;
