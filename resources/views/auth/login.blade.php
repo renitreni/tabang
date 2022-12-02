@@ -37,7 +37,7 @@
                                 <div class="text-center">
                                     <a href="{{ route('complaint') }}">
                                         <button class="button alert-btn mb-5">
-                                            <img src="{{ asset('images/alert.png') }}" width="150px" height="150px">
+                                            <img src="{{ asset('images/alert2.png') }}" width="150px" height="150px">
                                         </button>
                                     </a>
                                     <img src="{{ asset('images/sponsors.png') }}" class="img-fluid">
