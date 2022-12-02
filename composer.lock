@@ -4,8 +4,63 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7afd70110be2687b7ccb2aaeb7eda2e4",
+    "content-hash": "c2592b95bb43378e0446d783325196ff",
     "packages": [
+        {
+            "name": "ascsoftw/livewire-toast",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ascsoftw/livewire-toast.git",
+                "reference": "8f88eb937e618ef8d34c89e9dbc19dfa6a2396af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ascsoftw/livewire-toast/zipball/8f88eb937e618ef8d34c89e9dbc19dfa6a2396af",
+                "reference": "8f88eb937e618ef8d34c89e9dbc19dfa6a2396af",
+                "shasum": ""
+            },
+            "require-dev": {
+                "livewire/livewire": "^2.4",
+                "orchestra/testbench": "^6.17"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ascsoftw\\LivewireToast\\LivewireToastServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ascsoftw\\LivewireToast\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "AscSoftwares",
+                    "email": "support@ascsoftwares.com"
+                }
+            ],
+            "description": "Livewire Package to display Toast Notifications",
+            "keywords": [
+                "LivewireToast",
+                "laravel",
+                "livewire",
+                "notifications",
+                "toast"
+            ],
+            "support": {
+                "issues": "https://github.com/ascsoftw/livewire-toast/issues",
+                "source": "https://github.com/ascsoftw/livewire-toast/tree/1.0.1"
+            },
+            "time": "2021-05-25T11:07:52+00:00"
+        },
         {
             "name": "brick/math",
             "version": "0.10.2",
@@ -5958,16 +6013,16 @@
         },
         {
             "name": "laravel/sail",
-            "version": "v1.16.2",
+            "version": "v1.16.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sail.git",
-                "reference": "7d1ed5f856ec8b9708712e3fc0708fcabe114659"
+                "reference": "0dbee8802e17911afbe29a8506316343829b056e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sail/zipball/7d1ed5f856ec8b9708712e3fc0708fcabe114659",
-                "reference": "7d1ed5f856ec8b9708712e3fc0708fcabe114659",
+                "url": "https://api.github.com/repos/laravel/sail/zipball/0dbee8802e17911afbe29a8506316343829b056e",
+                "reference": "0dbee8802e17911afbe29a8506316343829b056e",
                 "shasum": ""
             },
             "require": {
@@ -6014,7 +6069,7 @@
                 "issues": "https://github.com/laravel/sail/issues",
                 "source": "https://github.com/laravel/sail"
             },
-            "time": "2022-09-28T13:13:22+00:00"
+            "time": "2022-11-21T16:19:18+00:00"
         },
         {
             "name": "mockery/mockery",

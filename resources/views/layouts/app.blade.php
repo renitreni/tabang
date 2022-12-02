@@ -19,7 +19,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('themes/sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
-
+    @livewireStyles
 </head>
 
 <body id="page-top">
@@ -42,7 +42,7 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container-fluid position-relative">
                 {{ $slot }}
             </div>
             <!-- /.container-fluid -->
@@ -65,7 +65,7 @@
 
 </div>
 <!-- End of Page Wrapper -->
-
+@livewireScripts
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
@@ -80,7 +80,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('themes/sb-admin/js/sb-admin-2.min.js') }}js/sb-admin-2.min.js"></script>
-
+@stack('scripts')
 </body>
 
 </html>

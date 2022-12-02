@@ -17,7 +17,10 @@ class AgencyFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'agency_code' => $this->faker->creditCardNumber,
+            'name' => $this->faker->company(),
+            'description' => $this->faker->paragraph(),
+            'address' => $this->faker->address(),
         ];
     }
 }
