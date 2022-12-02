@@ -1,6 +1,9 @@
 .bg-login-image {
           background-image: url("/images/background2.png");
         }
+.bg-custom {
+        background-color: linear-gradient(90deg, rgb(252, 52, 2) 0%, rgb(128, 89, 53) 100%);
+}
 .alert-btn {
             min-width: 6px;
             min-height: 60px;
