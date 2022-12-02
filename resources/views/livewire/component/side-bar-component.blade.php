@@ -18,12 +18,27 @@
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
-
+    @can('admin')
         <!-- Nav Item - Dashboard -->
-        <li class="nav-item @if($uri == 'users') active @endif">
-            <a class="nav-link" href="{{ route('users') }}">
-                <i class="fas fa-fw fa-users"></i>
-                <span>User Management</span></a>
-        </li>
+            <li class="nav-item @if($uri == 'users') active @endif">
+                <a class="nav-link" href="{{ route('users') }}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Users</span></a>
+            </li>
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item @if($uri == 'agencies') active @endif">
+                <a class="nav-link" href="{{ route('agencies') }}">
+                    <i class="fas fa-fw fa-building"></i>
+                    <span>Agencies</span></a>
+            </li>
+    @endcan
+    @can('agency')
+        <!-- Nav Item - Dashboard -->
+            <li class="nav-item @if($uri == 'ofw') active @endif">
+                <a class="nav-link" href="{{ route('ofw') }}">
+                    <i class="fas fa-fw fa-plane-departure"></i>
+                    <span>My OFW</span></a>
+            </li>
+        @endcan
     </ul>
 </div>

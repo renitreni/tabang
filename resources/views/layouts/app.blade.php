@@ -42,7 +42,7 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container-fluid position-relative">
                 {{ $slot }}
             </div>
             <!-- /.container-fluid -->
@@ -80,7 +80,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('themes/sb-admin/js/sb-admin-2.min.js') }}js/sb-admin-2.min.js"></script>
-
+@stack('scripts')
 </body>
 
 </html>

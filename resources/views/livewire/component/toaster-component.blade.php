@@ -1,21 +1,23 @@
 <div>
-    <div class="position-fixed top-0 end-0 p-3">
-        <div id="liveToast" class="toast hide fade" role="alert" aria-live="assertive" aria-atomic="true" wire:ignore.self>
+    <div style="position: absolute; top: 0; right: 0; z-index: 999;">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="10000" wire:ignore.self>
             <div class="toast-header">
-                <i class="fas fa-bell me-2"></i>
-                <strong class="me-auto">Notification</strong>
+                <strong class="mr-2">Notification</strong>
                 <small>{{ now()->diffForHumans() }}</small>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <div class="toast-body">
                 {{ $toastMessage }}
             </div>
         </div>
     </div>
-    <script>
-        let toaster = new bootstrap.Toast(document.getElementById('liveToast'))
-        Livewire.on('toast', message => {
-            toaster.show()
-        })
-    </script>
+    @push('scripts')
+        <script>
+            Livewire.on('toast', message => {
+                $('.toast').toast('show')
+            })
+        </script>
+    @endpush
 </div>

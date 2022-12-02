@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Livewire\AgencyLivewire;
 use App\Http\Livewire\ComplaintFormLivewire;
 use App\Http\Livewire\HomeLivewire;
+use App\Http\Livewire\MyOFWLivewire;
 use App\Http\Livewire\RegisterLivewire;
 use App\Http\Livewire\UsersLivewire;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +40,8 @@ Route::get('/', function () {
 
 Route::middleware('auth:web')->group(function () {
     Route::get('/home', HomeLivewire::class)->name('home');
-    Route::get('/users', UsersLivewire::class)->name('users');
+    Route::get('/users', UsersLivewire::class)->name('users')->can('admin');
+    Route::get('/agencies', AgencyLivewire::class)->name('agencies')->can('admin');
+    Route::get('/ofw', MyOFWLivewire::class)->name('ofw')->can('agency');
 });
 
