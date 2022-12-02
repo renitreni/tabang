@@ -20,7 +20,7 @@
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bg-custom">
 
 <div class="container">
 
