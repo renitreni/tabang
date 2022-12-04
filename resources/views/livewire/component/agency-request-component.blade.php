@@ -9,10 +9,13 @@
                     <div class="col-12">
                         <div class="row">
                             <div class="col-auto">
-                                <input class="form-control">
+                                <input type="text" class="form-control" wire:model="code">
+                                @error('code') {{ $message }}  @enderror
                             </div>
                             <div class="col-auto">
-                                <button type="button" class="btn btn-primary my-auto">JOIN NOW</button>
+                                <button type="button" class="btn btn-primary my-auto" wire:click="send">
+                                    JOIN NOW
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -20,4 +23,14 @@
             </div>
         </div>
     </div>
+
+    @isset($application['status'])
+        @if($application['status'] == '0')
+            <h2>Wait for the Agency's Approval</h2>
+        @else
+            <livewire:component.complaint-component/>
+        @endif
+    @else
+        <h2>You have no agency yet.</h2>
+    @endif
 </div>
