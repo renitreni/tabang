@@ -6,7 +6,7 @@
     @can('user')
         <livewire:component.agency-request-component/>
     @elsecan('agency')
-
+        <livewire:component.complaint-table-component/>
     @elsecan('admin')
         <livewire:component.complaint-table-component/>
     @endif
