@@ -10,9 +10,9 @@
                 <div class="col-md-6 mb-2">
                     <label class="form-label">Fullname</label>
                     <input type="text" name="fullname"
-                           class="form-control @error('details.fullname') is-invalid @enderror"
-                           wire:model.debounce="details.fullname"/>
-                    @error('details.fullname')
+                           class="form-control @error('details.full_name') is-invalid @enderror"
+                           wire:model.debounce="details.full_name"/>
+                    @error('details.full_name')
                     <div class="text-danger small">{{ $message }}</div> @enderror
                 </div>
                 <div class="col-md-3 col-6 mb-2">
