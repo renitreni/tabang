@@ -165,4 +165,12 @@ class UsersLivewire extends Component
         $this->resetVars();
         $this->emit('refreshDatatable');
     }
+
+    public function resetPassword()
+    {
+        User::query()
+            ->updateOrCreate(['id' => $this->userID], [
+                'password' => bcrypt('password'),
+            ]);
+    }
 }

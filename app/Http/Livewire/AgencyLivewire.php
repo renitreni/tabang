@@ -3,11 +3,19 @@
 namespace App\Http\Livewire;
 
 use App\Models\Agency;
+use App\Models\AgencyUser;
+use App\Models\User;
 use Livewire\Component;
 
 class AgencyLivewire extends Component
 {
     public ?array $detail = null;
+
+    public ?string $userEmail = null;
+
+    public mixed $user = [];
+
+    public ?array $members = [];
 
     public function render()
     {
@@ -29,7 +37,10 @@ class AgencyLivewire extends Component
 
     public function getDetails($id)
     {
-        $this->detail = Agency::query()->find($id)->toArray();
+        $this->detail  = Agency::query()->find($id)->toArray();
+        $this->members = collect(
+            AgencyUser::query()->with('user')->where('agency_id', $id)->get() ?? []
+        )->toArray();
     }
 
     public function update()
@@ -49,5 +60,27 @@ class AgencyLivewire extends Component
     public function delete()
     {
         Agency::destroy($this->detail['id']);
+    }
+
+    public function showUser()
+    {
+        if ($this->userEmail && $this->userEmail != '') {
+            $this->user = User::withCount(['agency'])
+                              ->select('id', 'email')
+                              ->where('email', 'like', "%$this->userEmail%")
+                              ->get();
+        } else {
+            $this->user = [];
+        }
+    }
+
+    public function addAsMember($id)
+    {
+        $this->userEmail = null;
+        $this->user = [];
+        AgencyUser::query()->updateOrCreate(['user_id' => $id], [
+            'user_id' => $id,
+            'agency_id' => $this->detail['id'],
+        ]);
     }
 }

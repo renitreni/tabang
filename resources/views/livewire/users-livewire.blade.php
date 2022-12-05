@@ -223,6 +223,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary" wire:click="update">Update</button>
+                    <button type="button" class="btn btn-warning" wire:click="resetPassword">Reset Password</button>
                 </div>
             </div>
         </div>

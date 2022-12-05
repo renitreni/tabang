@@ -2,6 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\AgencyUser;
+use App\Models\Applicant;
 use Illuminate\Database\Eloquent\Builder;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -44,6 +46,12 @@ class ComplaintTable extends DataTableComponent
 
     public function query(): Builder
     {
-        return Complaint::query();
+        return Complaint::query()
+            ->when(auth()->user()->roles == 2, function ($q) {
+
+                $agency = AgencyUser::query()->select('agency_id')->where('user_id', auth()->id())->first();
+
+                $q->where('agency_id', $agency->agency_id);
+            });
     }
 }
