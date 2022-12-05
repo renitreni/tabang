@@ -40,7 +40,7 @@
                                             <img src="{{ asset('images/alert2.png') }}" width="150px" height="150px">
                                         </button>
                                     </a>
-                                    <img src="{{ asset('images/sponsors.png') }}" class="img-fluid">
+                                   
                                 </div>
                                 <form method="POST" action="{{ route('login') }}" class="user mt-3">
                                     @csrf
@@ -85,6 +85,7 @@
                                         </a>
                                     </div>
                                 </form>
+                                <img src="{{ asset('images/sponsors.png') }}" class="img-fluid">
                                 <hr>
                                 <div class="text-center d-flex flex-column">
                                     @if (Route::has('password.request'))
