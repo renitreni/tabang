@@ -17,11 +17,12 @@ class AgencyLivewire extends Component
 
     public ?array $members = [];
 
+    public mixed $agencies = null;
+
     public function render()
     {
-        return view('livewire.agency-livewire', [
-            'agencies' => Agency::query()->orderBy('name')->paginate(10),
-        ]);
+        $this->agencies = Agency::query()->orderBy('name')->paginate(10);
+        return view('livewire.agency-livewire');
     }
 
     public function store()
@@ -31,6 +32,8 @@ class AgencyLivewire extends Component
         ]);
 
         Agency::query()->create($this->detail);
+
+        $this->agencies = Agency::query()->orderBy('name')->paginate(10);
 
         $this->emit('toast', 'Success!');
     }

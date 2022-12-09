@@ -51,8 +51,8 @@ class UsersLivewire extends Component
 
     public function showAddUserModal($value)
     {
-        $this->role = $value;
         $this->resetVars();
+        $this->role = $value;
 
         if ($value == 1) {
             $this->title = 'Add Admin';
@@ -67,10 +67,10 @@ class UsersLivewire extends Component
     public function save()
     {
         $this->validate([
-            'password' => 'required',
             'email' => 'required|unique:users',
             'phone' => 'required|unique:users',
             'photo' => 'required|file|mimes:jpeg,jpg,png',
+            'password' => 'required',
             'passwordConfirmation' => 'required|same:password',
         ]);
 
@@ -82,6 +82,7 @@ class UsersLivewire extends Component
                         'email' => $this->email,
                         'first_name' => $this->firstName,
                         'last_name' => $this->lastName,
+                        'password' => bcrypt($this->password),
                         'profile_photo' => $this->photo->store('profile_photos/'),
                     ]);
 
