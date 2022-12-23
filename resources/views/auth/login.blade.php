@@ -22,10 +22,10 @@
 
 <body class="bg-custom">
 
-<div class="container">
+<div class="container-fluid" style="width: 1500px">
 
     <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5">
         <div class="col-xl-10 col-lg-12 col-md-9">
             <div class="card o-hidden border-0 shadow-lg my-5" style="background-color: #fff6;">
                 <div class="card-body p-0">
@@ -40,7 +40,7 @@
                                             <img src="{{ asset('images/alert2.png') }}" width="150px" height="150px">
                                         </button>
                                     </a>
-                                   
+                                    <h1 class="login-h1">TABANG OFW</h1>
                                 </div>
                                 <form method="POST" action="{{ route('login') }}" class="user mt-3">
                                     @csrf
@@ -85,7 +85,8 @@
                                         </a>
                                     </div>
                                 </form>
-                                <img src="{{ asset('images/sponsors.png') }}" class="img-fluid">
+                                <h1 class="login-kamusta">KAMUSTA KABAYAN</h1>
+                                <img src="{{ asset('images/sponsors.png') }}" class="img-fluid logo-sponsor">
                                 <hr>
                                 <div class="text-center d-flex flex-column">
                                     @if (Route::has('password.request'))
