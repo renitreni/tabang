@@ -12,6 +12,7 @@ class UserFactory extends Factory
 {
     /**
      * Define the model's default state.
+     * Roles: 1 = Admin, 2 = Agency, 3=User.
      *
      * @return array<string, mixed>
      */
@@ -24,7 +25,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'phone' => fake()->phoneNumber,
             'address' => fake()->address,
-            'roles' => fake()->randomElement([1,2,3]),
+            'roles' => fake()->randomElement([1, 2, 3]),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
