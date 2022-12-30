@@ -48,7 +48,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function agency(): HasOne
+    public function affiliate(): HasOne
     {
         return $this->hasOne(AgencyUser::class, 'user_id', 'id');
     }

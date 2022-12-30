@@ -14,7 +14,6 @@ class AgencyRequestComponent extends Component
     public ?string $code = null;
     public ?array $application = null;
 
-    // 4916318560868029
     public function render(): Factory|View|Application
     {
         $this->application = collect(Applicant::query()->where('user_id', auth()->id())->first() ?? [])->toArray();
@@ -26,7 +25,10 @@ class AgencyRequestComponent extends Component
     {
         $this->validate(['code' => 'required|exists:agencies,agency_code']);
 
-        $agency = Agency::query()->select('id')->where('agency_code', $this->code)->first();
+        $agency = Agency::query()
+                        ->select('id')
+                        ->where('agency_code', $this->code)
+                        ->first();
 
         Applicant::query()->updateOrCreate(['user_id' => auth()->id()],
             [
@@ -34,7 +36,8 @@ class AgencyRequestComponent extends Component
                 'user_id' => auth()->id(),
                 'status' => 0,
             ]);
-
+            
+        $this->code = '';
         $this->emit('toast', 'Request sent to Agency!');
     }
 }

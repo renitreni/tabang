@@ -2,10 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Agency;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AgencyUser extends Model
 {
@@ -19,5 +20,11 @@ class AgencyUser extends Model
     public function user(): HasMany
     {
         return $this->hasMany(User::class, 'id', 'user_id');
+    }
+
+
+    public function agency(): HasOne
+    {
+        return $this->hasOne(Agency::class, 'id', 'agency_id');
     }
 }
