@@ -22,5 +22,7 @@ class Complaint extends Model
         'contact_1',
         'contact_2',
         'complaint',
+        'longitude',
+        'latitude'
     ];
 }

@@ -15,14 +15,15 @@
                     <ul class="list-group">
                         @foreach($agencies as $item)
                             <li class="list-group-item d-flex flex-row">
-                                <div>
-                                    <a href="#" class="btn btn-link m-0 p-0" data-toggle="modal"
+                                <div class="d-flex flex-row">
+                                    <a href="#" class="btn btn-link m-0 p-0 mr-2" data-toggle="modal"
                                        data-target="#memberModal" wire:click="getDetails({{ $item->id }})">Members</a>
                                     <a href="#" class="btn btn-link m-0 p-0" data-toggle="modal"
                                        data-target="#agencyEditModal" wire:click="getDetails({{ $item->id }})">Edit</a>
                                 </div>
-                                <div class="ml-2">
-                                    {{ $item->name }}
+                                <div class="w-100 ml-2 d-flex justify-content-between">
+                                    <div>{{ $item->name }}</div>
+                                    <div>{{ $item->agency_code }}</div>
                                 </div>
                             </li>
                         @endforeach

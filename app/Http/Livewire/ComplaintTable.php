@@ -35,6 +35,10 @@ class ComplaintTable extends DataTableComponent
                 ->sortable(),
             Column::make("Contact 2", "contact_2")
                 ->sortable(),
+            Column::make("Longitude", "longitude")
+                ->sortable(),
+            Column::make("Latitude", "latitude")
+                ->sortable(),
             Column::make("Complaint", "complaint")
                 ->sortable(),
             Column::make("Created at", "created_at")

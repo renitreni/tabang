@@ -28,6 +28,8 @@ return new class extends Migration
             $table->string('contact_1')->nullable();
             $table->string('contact_2')->nullable();
             $table->string('complaint')->nullable();
+            $table->integer('longitude')->nullable();
+            $table->integer('latitude')->nullable();
             $table->timestamps();
         });
     }

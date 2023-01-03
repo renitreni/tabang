@@ -11,6 +11,8 @@ class ComplaintComponent extends Component
 {
     public array $details = [];
 
+    public array $coordinates = [];
+
     public function render()
     {
         return view('livewire.component.complaint-component');
@@ -29,6 +31,7 @@ class ComplaintComponent extends Component
             'details.contact_1' => 'required',
             'details.contact_2' => 'required',
             'details.complaint' => 'required',
+            'coordinates'=> 'required'
         ]);
 
         $agency = Applicant::query()->select('agency_id')->where('user_id', auth()->id())->first();
@@ -46,6 +49,8 @@ class ComplaintComponent extends Component
             'contact_1' => $this->details['contact_1'] ?? null,
             'contact_2' => $this->details['contact_2'] ?? null,
             'complaint' => $this->details['complaint'] ?? null,
+            'longitude' => $this->coordinates[0] ?? null,
+            'latitude' => $this->coordinates[0] ?? null,
         ]);
 
         $this->emit('toast', 'Complaint has been sent!');

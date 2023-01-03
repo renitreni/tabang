@@ -91,13 +91,49 @@
                     @error('details.complaint')
                     <div class="text-danger small">{{ $message }}</div> @enderror
                 </div>
-            </div>
-        </div>
-        <div class="card-footer">
-            <div class="col-md-12 mb-2">
-                <button type="button" class="btn btn-primary btn-block" wire:click="store">Submit</button>
-                <a href="{{ route('login') }}" class="btn btn-secondary btn-block">Cancel</a>
+                <div class="col-md-12">
+                    <div id="map"></div>
+                </div>
+                <div class="col-md-12 mb-2">
+                    <button type="button" class="btn btn-primary btn-block" wire:click="store">Submit</button>
+                </div>
             </div>
         </div>
     </div>
+    @push('scripts')
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoicmVuaWVyLXRyZW51ZWxhIiwiYSI6ImNrZHhya2l3aTE3OG0ycnBpOWxlYjV3czUifQ.4hVvT7_fiVshoSa9P3uAew';
+
+
+            var x = document.getElementById("demo");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else {
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                const map = new mapboxgl.Map({
+                    container: 'map', // container ID
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+                    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+                    center: [position.coords.longitude, position.coords.latitude], // starting position [lng, lat]
+                    zoom: 12 // starting zoom
+                });
+
+                const marker1 = new mapboxgl.Marker()
+                    .setLngLat([position.coords.longitude, position.coords.latitude])
+                    .addTo(map);
+
+                @this.set('coordinates', [position.coords.longitude, position.coords.latitude])
+            }
+
+            getLocation()
+        </script>
+    @endpush
 </div>

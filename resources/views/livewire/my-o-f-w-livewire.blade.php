@@ -22,6 +22,7 @@
                         </div>
                         <div class="my-auto">
                             {{$applicant['user']['last_name']}}, {{$applicant['user']['first_name']}}
+                            <strong>{{$applicant['user']['email']}}</strong>
                         </div>
                     </li>
                 @endforeach
