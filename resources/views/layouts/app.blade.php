@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ asset('themes/sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
     <style>
         .sidebar {
             min-height: 100% !important;
@@ -31,6 +32,19 @@
         }
         .d-flex.align-items-center > span {
             white-space: nowrap;
+        }
+        a:hover { 
+            text-decoration: none; 
+        }
+        .h-fit {
+            height: fit-content;
+        }
+        .w-fit {
+            width: fit-content;
+        }
+        .profile_image {
+            width: 10rem;
+            height: 10rem;
         }
     </style>
     @livewireStyles

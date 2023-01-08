@@ -1,4 +1,4 @@
-<div>
+<div class="min-vh-100">
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
