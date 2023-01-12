@@ -10,9 +10,9 @@
                 <div class="col-md-6 mb-2">
                     <label class="form-label">Fullname</label>
                     <input type="text" name="fullname"
-                           class="form-control @error('details.full_name') is-invalid @enderror"
-                           wire:model.debounce="details.full_name"/>
-                    @error('details.full_name')
+                           class="form-control @error('details.fullname') is-invalid @enderror"
+                           wire:model.debounce="details.fullname"/>
+                    @error('details.fullname')
                     <div class="text-danger small">{{ $message }}</div> @enderror
                 </div>
                 <div class="col-md-3 col-6 mb-2">
@@ -95,7 +95,7 @@
                     <div id="map"></div>
                 </div>
                 <div class="col-md-12 mb-2">
-                    <button type="button" class="btn btn-primary btn-block" wire:click="store">Submit</button>
+                    <button id="sendBtn" type="button" class="btn btn-primary btn-block" wire:click="store">Submit</button>
                 </div>
             </div>
         </div>
@@ -103,10 +103,10 @@
     @push('scripts')
         <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
         <script src="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.js"></script>
-        <script>
+        <script type="text/javascript">
+            let long, lat;
             mapboxgl.accessToken = 'pk.eyJ1IjoicmVuaWVyLXRyZW51ZWxhIiwiYSI6ImNrZHhya2l3aTE3OG0ycnBpOWxlYjV3czUifQ.4hVvT7_fiVshoSa9P3uAew';
-
-
+            
             var x = document.getElementById("demo");
 
             function getLocation() {
@@ -125,15 +125,21 @@
                     center: [position.coords.longitude, position.coords.latitude], // starting position [lng, lat]
                     zoom: 12 // starting zoom
                 });
-
                 const marker1 = new mapboxgl.Marker()
                     .setLngLat([position.coords.longitude, position.coords.latitude])
                     .addTo(map);
+                lat = position.coords.latitude;
+                long = position.coords.longitude;
+            }
 
-                @this.set('coordinates', [position.coords.longitude, position.coords.latitude])
+            const sendBtn = document.querySelector("#sendBtn")
+            sendBtn.addEventListener("click", ()=>setLoc())
+            function setLoc() {
+                @this.set('coordinates', [long, lat])
             }
 
             getLocation()
+                
         </script>
     @endpush
 </div>

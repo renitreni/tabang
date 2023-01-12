@@ -92,5 +92,4 @@
             <button type="button" class="btn btn-primary h-100" wire:click="updateProfile">Save</button>
         </div>
     </div>
-    {{-- Knowing others is intelligence; knowing yourself is true wisdom. --}}
 </div>

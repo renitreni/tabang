@@ -6,12 +6,15 @@ use App\Models\Agency;
 use App\Models\Applicant;
 use App\Models\Complaint;
 use Livewire\Component;
+use Stevebauman\Location\Facades\Location;
 
 class ComplaintComponent extends Component
 {
     public array $details = [];
 
     public array $coordinates = [];
+    public float $long;
+    public float $lat;
 
     public function render()
     {
