@@ -92,7 +92,7 @@
                     <div class="text-danger small">{{ $message }}</div> @enderror
                 </div>
                 <div class="col-md-12">
-                    <div id="map"></div>
+                    <div id="map" wire:ignore></div>
                 </div>
                 <div class="col-md-12 mb-2">
                     <button id="sendBtn" type="button" class="btn btn-primary btn-block" wire:click="store">Submit</button>
