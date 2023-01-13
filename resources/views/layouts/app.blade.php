@@ -43,8 +43,19 @@
             width: fit-content;
         }
         .profile_image {
-            width: 10rem;
-            height: 10rem;
+            width: 20rem;
+            height: 20rem;
+            object-fit: cover;
+            border-radius: 100%;
+        }
+        @media only screen and (max-width: 530px) {
+            .profile_image {
+            width: 100%;
+            /* height: auto; */
+            /* height: 100%; */
+            object-fit: cover;
+            border-radius: 100%;
+        }
         }
     </style>
     @livewireStyles

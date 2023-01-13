@@ -168,13 +168,10 @@
                     {{--                        Activity Log --}}
                     {{--                    </a> --}}
                     {{--                    <div class="dropdown-divider"></div> --}}
-                    <button type="button" class="dropdown-item">
-                        <a class="text-gray-800" href="{{ route('profile') }}">
-                            <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            <span>Profile</span>
-                            </a>
-                        
-                    </button>
+                    <a class="text-gray-800 d-block dropdown-item" href="{{ route('profile') }}">
+                        <i class="fa fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <span>Profile</span>
+                    </a>
                     <button type="button" class="dropdown-item" href="#" data-toggle="modal"
                         data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
