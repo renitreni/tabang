@@ -48,6 +48,11 @@
             object-fit: cover;
             border-radius: 100%;
         }
+        .user_docs_img {
+            height: 20rem;
+            width: 100%;
+            object-fit: cover;
+        }
         @media only screen and (max-width: 530px) {
             .profile_image {
             width: 100%;

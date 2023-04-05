@@ -36,7 +36,7 @@ class UserDocuments extends Component
             $this->details['police'] = $this->police->store('user_documents', 'public');
         }
         if ($this->birth_cert) {
-            $this->details['birth_cert'] = $this->tor->store('user_documents', 'public');
+            $this->details['birth_cert'] = $this->birth_cert->store('user_documents', 'public');
         }
         if ($this->tor) {
             $this->details['tor'] = $this->tor->store('user_documents', 'public');
@@ -56,23 +56,52 @@ class UserDocuments extends Component
 
         $this->details['user_id'] = auth()->user()->id;
 
-        UserDocs::query()->create([
-            'user_id' => $this->details['user_id'],
-            'nbi' => $this->details['nbi'],
-            // 'police' => $this->details['police'],
-            // 'birth_cert' => $this->details['birth_cert'],
-            // 'tor' => $this->details['tor'],
-            // 'sss' => $this->details['sss'],
-            // 'tin' => $this->details['tin'],
-            // 'philhealth' => $this->details['philhealth'],
-            // 'resume' => $this->details['resume'],
-        ]);
+        $user_docs = UserDocs::query()->where('user_id', $this->user_id)->first();
+        if($user_docs) {
+            UserDocs::where('user_id', $this->user_id)->update([
+                'nbi' => $this->details['nbi'],
+                'police' => $this->details['police'],
+                'birth_cert' => $this->details['birth_cert'],
+                'tor' => $this->details['tor'],
+                'sss' => $this->details['sss'],
+                'tin' => $this->details['tin'],
+                'philhealth' => $this->details['philhealth'],
+                'resume' => $this->details['resume'],
+            ]);
+            
+        } else {
+            UserDocs::query()->create([
+                'user_id' => $this->user_id,
+                'nbi' => $this->details['nbi'],
+                'police' => $this->details['police'],
+                'birth_cert' => $this->details['birth_cert'],
+                'tor' => $this->details['tor'],
+                'sss' => $this->details['sss'],
+                'tin' => $this->details['tin'],
+                'philhealth' => $this->details['philhealth'],
+                'resume' => $this->details['resume'],
+            ]);
+        }
+        $this->emit('toast', 'User documents has been saved!');
+        $this->clearDatas();
     }
 
     public function mount()
     {
         $this->user_id = auth()->user()->id;
-        $this->details = UserDocs::query()->where('user_id', $this->user_id)->get()->toArray()[0];
-        // dd($this->details);
+        $docs = UserDocs::query()->where('user_id', $this->user_id)->get()->toArray();
+        $this->details = count($docs) ? $docs[0] : $docs;
+    }
+
+    public function clearDatas()
+    {
+        $this->nbi = '';
+        $this->police = '';
+        $this->birth_cert = '';
+        $this->tor = '';
+        $this->sss = '';
+        $this->tin = '';
+        $this->philhealth = '';
+        $this->resume = '';
     }
 }
