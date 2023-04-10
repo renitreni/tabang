@@ -9,7 +9,12 @@
             <div class="row mt-5">
                 <div class="col-md-6 mb-2">
                     <label class="form-label">NBI clearance</label>
-                    <x-input type="file" model="nbi" />
+                    <div class="d-flex">
+                        @if ($nbi || $details['nbi'])
+                            <button class="btn btn-sm btn-danger mr-2" wire:click="remove('nbi')">Delete</button>
+                        @endif
+                        <x-input type="file" model="nbi" />
+                    </div>
                     <div class="mb-4"></div>
                     @if ($nbi)
                         <span class="d-block col-md-6">
@@ -24,13 +29,18 @@
                             <img src="{{ Storage::url($details['nbi']) }}" class="user_docs_img">
                             <a href="/storage/{{ $details['nbi'] }}" target="_blank">
                              </a>
-                            </a>
+                        </a>
                         @endisset
                     @endif
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="form-label">Police clearance</label>
-                    <x-input type="file" model="police"/>
+                    <div class="d-flex">
+                        @if ($police || $details['police'])
+                            <button class="btn btn-sm btn-danger mr-2" wire:click="remove('police')">Delete</button>
+                        @endif
+                        <x-input type="file" model="police" />
+                    </div>
                     <div class="mb-4"></div>
                     @if ($police)
                         <span class="d-block col-md-6">
@@ -50,7 +60,12 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="form-label">Birth certificate</label>
-                    <x-input type="file" model="birth_cert"/>
+                    <div class="d-flex">
+                        @if ($birth_cert || $details['birth_cert'])
+                            <button class="btn btn-sm btn-danger mr-2" wire:click="remove('birth_cert')">Delete</button>
+                        @endif
+                        <x-input type="file" model="birth_cert" />
+                    </div>
                     <div class="mb-4"></div>
 
                     @if ($birth_cert)
@@ -70,9 +85,13 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="form-label">Transcript of records</label>
-                    <x-input type="file" model="tor"/>
+                    <div class="d-flex">
+                        @if ($tor || $details['tor'])
+                            <button class="btn btn-sm btn-danger mr-2" wire:click="remove('tor')">Delete</button>
+                        @endif
+                        <x-input type="file" model="tor"/>
+                    </div>
                     <div class="mb-4"></div>
-
                     @if ($tor)
                         <span class="d-block col-md-6">
                             Photo Preview:
@@ -90,7 +109,13 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="form-label">SSS id</label>
-                    <x-input type="file" model="sss"/>
+                    <div class="d-flex">
+                        @if ($sss || $details['sss'])
+                            <button class="btn btn-sm btn-danger mr-2" wire:click="remove('sss')">Delete</button>
+                        @endif
+                        <x-input type="file" model="sss"/>
+
+                    </div>
                     <div class="mb-4"></div>
 
                     @if ($sss)
@@ -110,7 +135,13 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="form-label">TIN id</label>
-                    <x-input type="file" model="tin"/>
+                    <div class="d-flex">
+                        @if ($tin || $details['tin'])
+                            <button class="btn btn-sm btn-danger mr-2" wire:click="remove('tin')">Delete</button>
+                        @endif
+                        <x-input type="file" model="tin"/>
+
+                    </div>
                     <div class="mb-4"></div>
 
                     @if ($tin)
@@ -130,7 +161,13 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="form-label">Philhealth</label>
-                    <x-input type="file" model="philhealth"/>
+                    <div class="d-flex">
+                        @if ($philhealth || $details['philhealth'])
+                            <button class="btn btn-sm btn-danger mr-2" wire:click="remove('philhealth')">Delete</button>
+                        @endif
+                        <x-input type="file" model="philhealth"/>
+
+                    </div>
                     <div class="mb-4"></div>
 
                     @if ($philhealth)
@@ -150,7 +187,13 @@
                 </div>
                 <div class="col-md-6 mb-2">
                     <label class="form-label">Resume</label>
-                    <x-input type="file" model="resume"/>
+                    <div class="d-flex">
+                        @if ($resume || $details['resume'])
+                            <button class="btn btn-sm btn-danger mr-2" wire:click="remove('resume')">Delete</button>
+                        @endif
+                        <x-input type="file" model="resume"/>
+
+                    </div>
                     <div class="mb-4"></div>
 
                     @if ($resume)

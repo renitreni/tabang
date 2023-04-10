@@ -86,6 +86,12 @@ class UserDocuments extends Component
         $this->clearDatas();
     }
 
+    public function remove($value)
+    {
+        $this->details[$value] = null;
+        $this->value = null;
+    }
+
     public function mount()
     {
         $this->user_id = auth()->user()->id;
