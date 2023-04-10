@@ -160,7 +160,7 @@
                     @endif
                 </div>
                 <div class="col-md-6 mb-2">
-                    <label class="form-label">Philhealth</label>
+                    <label class="form-label">Philhealth id</label>
                     <div class="d-flex">
                         @if ($philhealth || $details['philhealth'])
                             <button class="btn btn-sm btn-danger mr-2" wire:click="remove('philhealth')">Delete</button>

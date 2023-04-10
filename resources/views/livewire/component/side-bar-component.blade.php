@@ -41,12 +41,18 @@
             </li>
         @endcan
     @can('user')
-    <li class="nav-item @if($uri == 'userdocs') active @endif"">
-        <a class="nav-link" href="{{ route('userdocs')}}">
-            <i class="fas fa-fw fa-regular fa-folder"></i>
-            <span>Documents</span>
-        </a>
-    </li>
+        <li class="nav-item @if($uri == 'userdocs') active @endif"">
+            <a class="nav-link" href="{{ route('userdocs')}}">
+                <i class="fas fa-fw fa-regular fa-folder"></i>
+                <span>Documents</span>
+            </a>
+        </li>
+        <li class="nav-item @if($uri == 'reqchecklist') active @endif"">
+            <a class="nav-link" href="{{ route('reqchecklist')}}">
+                <i class="fas fa-fw fa-solid fa-list-ul"></i>
+                <span>Requirements</span>
+            </a>
+        </li>
     @endcan
 
     </ul>

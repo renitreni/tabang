@@ -53,6 +53,15 @@
             width: 100%;
             object-fit: cover;
         }
+        input[type=checkbox][disabled] {
+            outline: 5px solid white;
+            outline-offset: -20px;
+            border: 1px solid black;
+        }
+        .xmark_icon {
+            width:16px;
+            font-weight:900;
+        }
         @media only screen and (max-width: 530px) {
             .profile_image {
             width: 100%;
@@ -60,7 +69,7 @@
             /* height: 100%; */
             object-fit: cover;
             border-radius: 100%;
-        }
+            }
         }
     </style>
     @livewireStyles
