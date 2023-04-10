@@ -40,5 +40,14 @@
                     <span>My OFW</span></a>
             </li>
         @endcan
+    @can('user')
+    <li class="nav-item @if($uri == 'userdocs') active @endif"">
+        <a class="nav-link" href="{{ route('userdocs')}}">
+            <i class="fas fa-fw fa-regular fa-folder"></i>
+            <span>Documents</span>
+        </a>
+    </li>
+    @endcan
+
     </ul>
 </div>
