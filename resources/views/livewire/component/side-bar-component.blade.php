@@ -39,6 +39,11 @@
                     <i class="fas fa-fw fa-plane-departure"></i>
                     <span>My OFW</span></a>
             </li>
+            <li class="nav-item @if($uri == 'flight') active @endif">
+                <a class="nav-link" href="{{ route('flight') }}">
+                    <i class="fas fa-fw fa-calendar-week"></i>
+                    <span>Flights</span></a>
+            </li>
         @endcan
     @can('user')
         <li class="nav-item @if($uri == 'userdocs') active @endif"">
