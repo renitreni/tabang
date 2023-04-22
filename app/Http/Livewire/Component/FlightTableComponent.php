@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Component;
 
 use Livewire\Component;
 
-class ComplaintTableComponent extends Component
+class FlightTableComponent extends Component
 {
     public function render()
     {

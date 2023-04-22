@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\AgencyUser;
 use App\Models\Flight;
+use App\Models\ForeignAgency;
 
 class FlightLivewire extends Component
 {
@@ -15,6 +16,7 @@ class FlightLivewire extends Component
     public $FRA_id;
     public $employer;
     public ?int $flight_id;
+    public array $fra = [];
 
     public $statusArr = [
         "pending",
@@ -30,6 +32,12 @@ class FlightLivewire extends Component
 
     public function render()
     {
+        $this->fra = ForeignAgency::query()
+                                  ->select(['id', 'agency_name'])
+                                  ->where('agency_id', $this->agency_id)
+                                  ->get()
+                                  ->toArray();
+
         return view('livewire.flight-livewire');
     }
 
@@ -61,10 +69,8 @@ class FlightLivewire extends Component
     public function edit($id)
     {
         $this->flight_id = $id;
-        // $params = array_merge($this->details, ['agency_id' => $this->agency_id, 'status' => 'pending']);
-        // dd($id);
         $this->details = Flight::query()->where('id', $id)->get()->toArray()[0];
-        // dd($this->details);
+        $this->emit('refreshDatatable');
     }
 
     public function update()
@@ -76,7 +82,6 @@ class FlightLivewire extends Component
         ->updateOrCreate(['id' => $this->flight_id], $this->details);
 
         $this->emit('toast', 'Flight has been updated!');
-        // $this->details = [];
         $this->emit('refreshDatatable');
     }
 
@@ -90,5 +95,14 @@ class FlightLivewire extends Component
         Flight::query()->find($this->flight_id)->delete();
 
         $this->emit('refreshDatatable');
+    }
+
+    public function loadFRA()
+    {
+        $this->fra = ForeignAgency::query()
+                                  ->select(['id', 'agency_name'])
+                                  ->where('agency_id', $this->agency_id)
+                                  ->get()
+                                  ->toArray();
     }
 }

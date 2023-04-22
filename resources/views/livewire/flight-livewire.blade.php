@@ -5,11 +5,12 @@
     <div class="card">
         <div class="card-body">
             <div class="row">
-                <div class="col-12 d-flex justify-content-end mb-2">
+                <div class="col-12 d-flex mb-2" style="gap: 10px">
                     <div>
                         <a href="#" class="btn btn-outline-primary" data-toggle="modal" data-target="#flightAdd"
-                           wire:click="">Add Flight</a>
+                        wire:click="loadFRA">Add Flight</a>
                     </div>
+                    <livewire:component.f-r-a-component/>
                 </div>
                 <div class="col-12">
                     <livewire:flight-table/>
@@ -61,9 +62,12 @@
                                         </div>
                                         <div class="col-md-12 mb-2">
                                             <label class="form-label">FRA</label>
-                                            <input type="text" name="FRA_id"
-                                                class="form-control @error('details.FRA_id') is-invalid @enderror"
-                                                wire:model.debounce="details.FRA_id"/>
+                                                <select class="select-form" wire:model="details.FRA_id" @error('details.FRA_id') is-invalid @enderror">
+                                                    <option value="">Select Option</option>
+                                                    @foreach($fra as $agency)
+                                                        <option value="{{ $agency['id'] }}">{{ $agency['agency_name'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             @error('details.FRA_id')
                                             <div class="text-danger small">{{ $message }}</div> @enderror
                                         </div>
@@ -142,9 +146,12 @@
                                         </div>
                                         <div class="col-md-12 mb-2">
                                             <label class="form-label">FRA</label>
-                                            <input type="text" name="FRA_id"
-                                                class="form-control @error('details.FRA_id') is-invalid @enderror"
-                                                wire:model.debounce="details.FRA_id"/>
+                                                <select class="select-form" wire:model="details.FRA_id" @error('details.FRA_id') is-invalid @enderror">
+                                                    <option value="">Select Option</option>
+                                                    @foreach($fra as $agency)
+                                                        <option value="{{ $agency['id'] }}">{{ $agency['agency_name'] }}</option>
+                                                    @endforeach
+                                                </select>
                                             @error('details.FRA_id')
                                             <div class="text-danger small">{{ $message }}</div> @enderror
                                         </div>

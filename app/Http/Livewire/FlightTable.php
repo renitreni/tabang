@@ -7,6 +7,7 @@ use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
 use App\Models\Flight;
 use App\Models\AgencyUser;
+use App\Models\ForeignAgency;
 
 class FlightTable extends DataTableComponent
 {
@@ -26,7 +27,7 @@ class FlightTable extends DataTableComponent
                 ->sortable(),
             Column::make("Arrival", "arrival")
                 ->sortable(),
-            Column::make("FRA Id", "FRA_id")
+            Column::make("FRA", "agency_name")
                 ->sortable(),
             Column::make("Employer", "employer")
                 ->sortable(),
@@ -59,11 +60,8 @@ class FlightTable extends DataTableComponent
     public function query(): Builder
     {
         return Flight::query()
-            ->when(auth()->user()->roles == 2, function ($q) {
-
-                $agency = AgencyUser::query()->select('agency_id')->where('user_id', auth()->id())->first();
-
-                $q->where('agency_id', $agency->agency_id);
-            });
+        ->when(auth()->user()->roles == 2)
+        ->selectRaw('flights.*, foreign_agencies.agency_name')
+        ->leftJoin('foreign_agencies', 'foreign_agencies.id', '=', 'flights.FRA_id');
     }
 }
