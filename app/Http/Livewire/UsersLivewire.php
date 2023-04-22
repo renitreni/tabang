@@ -163,7 +163,6 @@ class UsersLivewire extends Component
                 'profile_photo' => $this->profile_photo,
             ]);
 
-        $this->resetVars();
         $this->emit('refreshDatatable');
     }
 

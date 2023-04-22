@@ -6,6 +6,7 @@ use App\Http\Livewire\HomeLivewire;
 use App\Http\Livewire\MyOFWLivewire;
 use App\Http\Livewire\UserDocuments;
 use App\Http\Livewire\RequirementChecklist;
+use App\Http\Livewire\FlightLivewire;
 use App\Http\Livewire\ProfileLivewire;
 use App\Http\Livewire\RegisterLivewire;
 use App\Http\Livewire\UsersLivewire;
@@ -46,6 +47,7 @@ Route::middleware('auth:web')->group(function () {
     Route::get('/users', UsersLivewire::class)->name('users')->can('admin');
     Route::get('/agencies', AgencyLivewire::class)->name('agencies')->can('admin');
     Route::get('/ofw', MyOFWLivewire::class)->name('ofw')->can('agency');
+    Route::get('/flight', FlightLivewire::class)->name('flight')->can('agency');
     Route::get('/userdocs', UserDocuments::class)->name('userdocs');
     Route::get('/reqchecklist', RequirementChecklist::class)->name('reqchecklist');
     Route::get('/profile', ProfileLivewire::class)->name('profile');
